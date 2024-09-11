@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 5cecdd9785b01354c8621bb08fdadc64
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - Stone: {fileID: 3128993163804034017, guid: c5307dd4a98c39345beeacf1c6539ddf, type: 3}
+  - Boat: {fileID: 68351736528692062, guid: ece23d6c31183e34c9fe54e66ef79d71, type: 3}
+  - Island: {fileID: 6228312912372073638, guid: 172269f5663ebbe459522b798d79f3c4, type: 3}
+  - Ship: {fileID: 8003253372424334145, guid: 8f8eb99ba74bbab48918a2fa8f915697, type: 3}
+  - instansPoints: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
