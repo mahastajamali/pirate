@@ -8,29 +8,47 @@ public class ship : MonoBehaviour
     [SerializeField] private float movement = 0.01f;
     private const float Xmin = -2.2f;
     private const float Xmax = 2.5f;
-  
-    
+    private int _health= 3;
+    private bool _gameOver=false;
     void Update()
     {
         float steerAmount = Input.GetAxis("Horizontal")*movement;
         var x = Mathf.Clamp(transform.position.x, Xmin, Xmax);
         transform.position = new Vector3(x, transform.position.y);
-        transform.Translate(steerAmount,moveSpeed,0);
+        if(_gameOver==false)
+        {
+         transform.Translate(steerAmount,moveSpeed,0);
+        
+        }
      
     }
-    bool gameOver;
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-       
         var otherGameObject = other.gameObject;
-        if (otherGameObject.tag=="OB"&& gameOver)
+        if (otherGameObject.tag == "OB")
         {
-            Debug.Log("GAME OVER");
+            DecreaseHealth();
+            if (_gameOver)
+            {
+                Debug.Log("GAME OVER");
+                Time.timeScale = 0;
+            }
+            else
+                Destroy(other.gameObject);
         }
+    }
 
-        if (otherGameObject.tag=="OB" && !gameOver)
+    private void DecreaseHealth()
+    {
+        _health--;
+        if (_health > 0)
         {
-            Destroy(other.gameObject);
+            Debug.Log("Player Health" + _health);
+        }
+        else
+        {
+            _gameOver = true;
         }
     }
 }

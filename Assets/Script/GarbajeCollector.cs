@@ -18,6 +18,10 @@ public class GarbajeCollector : MonoBehaviour
             position = new Vector3(position.x, yNewPos, position.z);
             backGroundTransform.position = position;
         }
+        if (otherGameObject.tag=="OB")
+        {
+            Destroy(other.gameObject);
+        }
     }
 
   
