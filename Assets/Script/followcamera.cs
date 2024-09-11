@@ -9,9 +9,12 @@ public class followcamera : MonoBehaviour
     [SerializeField] 
     private GameObject thingsToFollow;
 
+    [SerializeField] 
+    [Range(-10, 10)] 
+    private float yOffSet;
     private void LateUpdate()
     {
         transform.position = 
-            new Vector3(transform.position.x, thingsToFollow.transform.position.y,transform.position.z);
+            new Vector3(transform.position.x, thingsToFollow.transform.position.y+yOffSet,transform.position.z);
     }
 }

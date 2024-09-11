@@ -11,7 +11,6 @@ public class InstansLearn : MonoBehaviour
     void Start()
     {
         StartCoroutine(InstansObsticle());
-        Debug.Log("HE HE HE HE ");
     }
 
     private IEnumerator InstansObsticle()
