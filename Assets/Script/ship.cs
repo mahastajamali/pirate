@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class ship : MonoBehaviour
 {
@@ -20,17 +21,23 @@ public class ship : MonoBehaviour
     private TMP_Text healthText;
     [SerializeField] 
     private TMP_Text countScore;
-    
-    public UIManger UIManger;
+    [SerializeField]
+    private TMP_Text GOscore;
+
+    [SerializeField]
+    private GameObject gameOverPanel;
+    [FormerlySerializedAs("UIManger")] public UIManger uiManger;
     private const float Xmin = -2.2f;
     private const float Xmax = 2.5f;
     private int _health= 3;
     private bool _gameOver=false;
     private float _score=0;
+    private int _intScore;
     public void Start()
     {
         healthText.text = _health.ToString();
         countScore.text = _score.ToString();
+        GOscore.text = _intScore.ToString();
     }
 
     void Update()
@@ -44,8 +51,13 @@ public class ship : MonoBehaviour
          transform.Translate(steerAmount,moveSpeed*(_score/speedScaleUp),0);
         
         }
-        
-     
+
+    }
+    private void CountScore()
+    {
+        _score = _score + Time.deltaTime;
+        _intScore=Convert.ToInt32(_score);
+        countScore.text = _intScore.ToString();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -58,6 +70,8 @@ public class ship : MonoBehaviour
             {
                 Debug.Log("GAME OVER");
                 Time.timeScale = 0;
+                gameOverPanel.SetActive(true);
+                GOscore.text ="Score: "+ _intScore.ToString();
             }
             else
                 Destroy(other.gameObject);
@@ -79,11 +93,6 @@ public class ship : MonoBehaviour
         
     }
 
-    private void CountScore()
-    {
-        _score = _score + Time.deltaTime;
-       int _intScore=Convert.ToInt32(_score);
-        countScore.text = _intScore.ToString();
-    }
+  
       
 }

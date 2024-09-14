@@ -12,13 +12,7 @@ public class UIManger : MonoBehaviour
     {
         puaseButton.onClick.AddListener(OnButtonClick);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    
     public void OnButtonClick()
     {
         Debug.Log("Button Clicked ");
